@@ -380,6 +380,11 @@ public class Admin1 extends javax.swing.JFrame {
                 jButton16MouseClicked(evt);
             }
         });
+        jButton16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton16ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -992,7 +997,7 @@ public class Admin1 extends javax.swing.JFrame {
         // TODO add your handling code here:
         row= jTable2.getSelectedRow();
         col= jTable2.getColumnCount();
-        System.out.println(row+ " " + col);
+        //System.out.println(row+ " " + col);
         name.setText(dtm.getValueAt(row, 0).toString());
         email.setText(dtm.getValueAt(row, 1).toString());
         phone.setText(dtm.getValueAt(row, 2).toString());
@@ -1198,6 +1203,10 @@ public class Admin1 extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton16MouseClicked
+
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16ActionPerformed
  private void clearField()
  {
      name.setText("Name");

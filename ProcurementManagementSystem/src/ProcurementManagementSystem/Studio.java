@@ -26,10 +26,12 @@ public class Studio {
     
     
     public List<Employee>list= new ArrayList<>();
+    public List<Products>product= new ArrayList<>();
     
     private Studio()
     {
         list= new ArrayList<Employee>();
+        //product= new ArrayList<Products>();
     }
     
      public static Studio getInstance(){
@@ -130,6 +132,22 @@ public class Studio {
         
         
     }
+     
+     public void addProductList( Products a)
+    {
+        product.add(a);
+    }
+    
+   public void deleteProductEmployee(int a)
+   {
+       product.remove(a);
+   }
+   
+   public void updateProductEmployee(Products b, int a)
+   {
+       product.set(a,b);
+       
+   }
         
     
 }
