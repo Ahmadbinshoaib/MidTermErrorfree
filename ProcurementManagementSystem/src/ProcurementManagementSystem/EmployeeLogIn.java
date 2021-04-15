@@ -38,7 +38,7 @@ public class EmployeeLogIn extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        user = new javax.swing.JTextField();
+        user12 = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel7 = new javax.swing.JLabel();
         pass = new javax.swing.JPasswordField();
@@ -85,13 +85,13 @@ public class EmployeeLogIn extends javax.swing.JFrame {
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProcurementManagementSystem/icons8_user_20px.png"))); // NOI18N
 
-        user.setForeground(new java.awt.Color(255, 255, 255));
-        user.setText("Username");
-        user.setBorder(null);
-        user.setOpaque(false);
-        user.addActionListener(new java.awt.event.ActionListener() {
+        user12.setForeground(new java.awt.Color(255, 255, 255));
+        user12.setText("Username");
+        user12.setBorder(null);
+        user12.setOpaque(false);
+        user12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userActionPerformed(evt);
+                user12ActionPerformed(evt);
             }
         });
 
@@ -141,7 +141,7 @@ public class EmployeeLogIn extends javax.swing.JFrame {
                             .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(user12, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel8)))
                     .addGroup(usernameLayout.createSequentialGroup()
                         .addGap(165, 165, 165)
@@ -170,7 +170,7 @@ public class EmployeeLogIn extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usernameLayout.createSequentialGroup()
                         .addGroup(usernameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, usernameLayout.createSequentialGroup()
-                                .addComponent(user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(user12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18))
@@ -204,21 +204,25 @@ public class EmployeeLogIn extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void userActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userActionPerformed
+    private void user12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user12ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userActionPerformed
+    }//GEN-LAST:event_user12ActionPerformed
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
-        String username= user.getText();
+        String username= user12.getText();
+        
         String password= pass.getText();
-        dispose();
+        EmployeeLogIn ch= new EmployeeLogIn();
+        //ch.setVisible(false);
          for(int i=0; i<b.list.size(); i++)
     {
       if (username.equals(b.list.get(i).getUsername()) && password.equals(b.list.get(i).getPassword())  )
       {
           Employees a= new Employees();
-        a.setVisible(true);
+         a.setVisible(true);
+         Employees q= new Employees();
+         q.check.setText(username);
           
       }
       else
@@ -283,7 +287,14 @@ public class EmployeeLogIn extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JPasswordField pass;
-    private javax.swing.JTextField user;
+    public static javax.swing.JTextField user12;
     private javax.swing.JPanel username;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the username
+     */
+    public javax.swing.JPanel getUsername() {
+        return username;
+    }
 }

@@ -31,7 +31,7 @@ public class Studio {
     private Studio()
     {
         list= new ArrayList<Employee>();
-        //product= new ArrayList<Products>();
+        product= new ArrayList<Products>();
     }
     
      public static Studio getInstance(){
@@ -138,16 +138,47 @@ public class Studio {
         product.add(a);
     }
     
-   public void deleteProductEmployee(int a)
+   public void deleteProductList(int a)
    {
        product.remove(a);
    }
    
-   public void updateProductEmployee(Products b, int a)
+   public void updateProductList(Products b, int a)
    {
        product.set(a,b);
        
    }
+   
+   public boolean saveProductData(String filename)
+    { boolean flag= false;
+        try {
+            FileWriter fw = new FileWriter(filename);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            
+            
+            for(int i = 0 ; i < product.size();i++)
+            {
+                bw.write(product.get(i).getProductName() + ", "+
+                        product.get(i).getCompanyName() + ","+
+                        product.get(i).getPrice()+","+
+                        product.get(i).getQuantity()+","+
+                        product.get(i).getType()+"\n"
+                        
+                        
+                );
+            }
+            
+            bw.flush();
+            bw.close();
+            fw.close();
+            flag= true;
+        } catch (Exception ex) {
+            flag= false;
+        }
+        return flag;
+        
+    }
         
     
 }
