@@ -15,6 +15,7 @@ public class Request {
     private String ProductName;
     private String ProductType;
     private int ProductQuantity;
+    private String EMPID;
 
     /**
      * @return the EmpName
@@ -167,6 +168,47 @@ public class Request {
          boolean flag= false;
         this.ProductQuantity = ProductQuantity;
         return true;
+    }
+    
+    /**
+     * @return the EMPID
+     */
+    public String getEMPID() {
+        return EMPID;
+    }
+
+    /**
+     * @param EMPID the EMPID to set
+     */
+    public boolean setEMPID(String EMPID) {
+       boolean flag= false;
+     int count=0;
+     int len= EMPID.length();
+     char [] aEmployeeID= new char [len];
+     aEmployeeID= EMPID.toCharArray();
+     if(len==7)
+      {
+      if(aEmployeeID[0]>='A' && aEmployeeID[0]<='Z' && aEmployeeID[1]>='A' && aEmployeeID[1]<='Z' && aEmployeeID[2]>='A' && aEmployeeID[2]<='Z')
+      {
+        count= count+1;
+      }
+      if(aEmployeeID[3]=='-')
+      {
+         count=count+1; 
+      }
+
+         if(aEmployeeID[4]>='0' && aEmployeeID[4]<='9' && aEmployeeID[5]>='0' && aEmployeeID[5]<='9' && aEmployeeID[6]>='0' && aEmployeeID[6]<='9')
+         {
+             count=count+1;
+         }
+     
+     if(count==3)
+     {
+         this.EMPID= EMPID;
+         flag=true;
+     }
+  }
+  return flag;
     }
     
     

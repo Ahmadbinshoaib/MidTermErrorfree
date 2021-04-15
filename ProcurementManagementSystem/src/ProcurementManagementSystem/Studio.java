@@ -27,11 +27,12 @@ public class Studio {
     
     public List<Employee>list= new ArrayList<>();
     public List<Products>product= new ArrayList<>();
-    
+    public List<Request>request= new ArrayList<>();
     private Studio()
     {
         list= new ArrayList<Employee>();
         product= new ArrayList<Products>();
+        request= new ArrayList<Request>();
     }
     
      public static Studio getInstance(){
@@ -179,6 +180,22 @@ public class Studio {
         return flag;
         
     }
+   
+   public void addRequestList( Request obj)
+    {
+        request.add(obj);
+    }
+    
+   public void deleteRequestList(int a)
+   {
+       request.remove(a);
+   }
+   
+   public void updateRequestList(Request b, int a)
+   {
+       request.set(a,b);
+       
+   }
         
     
 }

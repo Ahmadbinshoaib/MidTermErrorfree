@@ -280,7 +280,7 @@ public class Employees extends javax.swing.JFrame {
             }
         });
 
-        check.setForeground(new java.awt.Color(240, 240, 240));
+        check.setForeground(new java.awt.Color(32, 32, 32));
         check.setText("jLabel1");
 
         jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProcurementManagementSystem/icons8_name_20px.png"))); // NOI18N
@@ -820,6 +820,7 @@ public class Employees extends javax.swing.JFrame {
         //JOptionPane.showMessageDialog(null, header);
         //JOptionPane.showMessageDialog(null,a.list.get(0).getName());
         setEmpFieldData();
+        dtm.setRowCount(0);
         for(int i=0; i<a.product.size(); i++)
             {
                 Object[] objs = {a.product.get(i).getProductName(), a.product.get(i).getQuantity(),  a.product.get(i).getType()};
@@ -849,6 +850,50 @@ public class Employees extends javax.swing.JFrame {
     private void jButton11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseClicked
         // TODO add your handling code here:
         
+        data= new Request();
+        String Name= ename.getText();
+        String user= username.getText();
+        String prodName= productname.getText();
+        String Type= type.getText();
+        String Quantity= quantity.getText();
+        int qtty= Integer.parseInt(Quantity);
+        String Empid= empid.getText();
+
+        if(data.setProductName(prodName) && data.setEmpName(Name) && data.setEmpUsername(user)  && data.setProductQuantity(qtty) && data.setProductType(Type) && data.setEMPID(Empid))
+        { 
+            for(int i=0; i<a.list.size(); i++)
+          {
+          if (prodName.equals(a.product.get(i).getProductName()))
+          {
+              if((a.product.get(i).getQuantity())!=0 && (qtty< a.product.get(i).getQuantity()))
+              {
+            a.addRequestList(data);
+              }
+              else
+              {
+                 JOptionPane.showMessageDialog(null,"Product is out of stock!. Thanks"); 
+              }
+          }
+          }
+
+            dtm.setRowCount(0);
+
+            for(int i=0; i<a.request.size(); i++)
+            {
+                Object[] objs = {a.request.get(i).getProductName(),a.request.get(i).getProductQuantity(),  a.request.get(i).getProductType()};
+                dtm.addRow(objs);
+            }
+
+            clearField();
+
+            JOptionPane.showMessageDialog(null,"Your request has been sent!. Thanks");
+
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"You are entering wrong credentials, Reconsider it and enter again. Thanks");
+        }
+
         
         
         

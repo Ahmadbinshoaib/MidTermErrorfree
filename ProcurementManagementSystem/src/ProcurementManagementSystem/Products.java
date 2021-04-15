@@ -16,6 +16,7 @@ public class Products {
     private String price;
     private int quantity;
     private String type;
+    
 
     /**
      * @return the productName
@@ -177,6 +178,8 @@ public class Products {
         return true;
         
     }
+
+    
     
     
     
