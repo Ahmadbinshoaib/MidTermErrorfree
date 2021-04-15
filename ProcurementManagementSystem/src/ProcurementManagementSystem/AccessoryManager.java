@@ -21,6 +21,10 @@ public class AccessoryManager extends javax.swing.JFrame {
     String header[] = new String[] {"Product Name", "Company Name", "Price", "Quantity", "Type"};
     DefaultTableModel dtm;
     int row,col;
+    
+    String header1[] = new String[] {"Emp Name", "Emp Username", "Emp ID", "Product Name", "Quantity", "Type", "Status"};
+    DefaultTableModel req;
+    int row1,col1;
     public AccessoryManager() {
         initComponents();
         
@@ -28,6 +32,9 @@ public class AccessoryManager extends javax.swing.JFrame {
         jTable2.setModel(dtm);
         this.setLocationRelativeTo(null);
         
+        req= new DefaultTableModel(header1,0);
+        jTable4.setModel(req);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -89,13 +96,14 @@ public class AccessoryManager extends javax.swing.JFrame {
         jLabel39 = new javax.swing.JLabel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        proname = new javax.swing.JTextField();
+        empid = new javax.swing.JTextField();
         jSeparator9 = new javax.swing.JSeparator();
         jSeparator10 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -478,6 +486,11 @@ public class AccessoryManager extends javax.swing.JFrame {
                 "Employee Name", "Employee Username", "Employee Designation", "Product Name", "Quantity", "Aprroval"
             }
         ));
+        jTable4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable4MouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jTable4);
 
         jLabel39.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -488,23 +501,23 @@ public class AccessoryManager extends javax.swing.JFrame {
 
         jLabel36.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProcurementManagementSystem/icons8_add_shopping_cart_20px_2.png"))); // NOI18N
 
-        jTextField9.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField9.setText("Product Name");
-        jTextField9.setBorder(null);
-        jTextField9.setOpaque(false);
-        jTextField9.addActionListener(new java.awt.event.ActionListener() {
+        proname.setForeground(new java.awt.Color(255, 255, 255));
+        proname.setText("Product Name");
+        proname.setBorder(null);
+        proname.setOpaque(false);
+        proname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField9ActionPerformed(evt);
+                pronameActionPerformed(evt);
             }
         });
 
-        jTextField10.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField10.setText("Employee Username");
-        jTextField10.setBorder(null);
-        jTextField10.setOpaque(false);
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        empid.setForeground(new java.awt.Color(255, 255, 255));
+        empid.setText("Employee ID");
+        empid.setBorder(null);
+        empid.setOpaque(false);
+        empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                empidActionPerformed(evt);
             }
         });
 
@@ -519,6 +532,14 @@ public class AccessoryManager extends javax.swing.JFrame {
         jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton3MouseClicked(evt);
+            }
+        });
+
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton4.setText("VIEW");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
             }
         });
 
@@ -547,22 +568,27 @@ public class AccessoryManager extends javax.swing.JFrame {
                             .addGroup(jPanel14Layout.createSequentialGroup()
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jLabel39)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(empid, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                                 .addComponent(jLabel36))
-                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(jButton1)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3)))
+                                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(58, Short.MAX_VALUE))
+                            .addComponent(proname, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(156, 156, 156)))
+                .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -581,8 +607,8 @@ public class AccessoryManager extends javax.swing.JFrame {
                     .addGroup(jPanel14Layout.createSequentialGroup()
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(proname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(empid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jLabel36))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -593,7 +619,8 @@ public class AccessoryManager extends javax.swing.JFrame {
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(93, 93, 93))
@@ -633,13 +660,13 @@ public class AccessoryManager extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton3MouseClicked
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void empidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_empidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_empidActionPerformed
 
-    private void jTextField9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField9ActionPerformed
+    private void pronameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pronameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField9ActionPerformed
+    }//GEN-LAST:event_pronameActionPerformed
 
     private void jButton18MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton18MouseClicked
         // TODO add your handling code here:
@@ -694,8 +721,28 @@ public class AccessoryManager extends javax.swing.JFrame {
         String Type= type.getText();
 
         if(credentials.setProductName(Name) && credentials.setCompanyName(Company) && credentials.setPrice(price)  && credentials.setQuantity(qtty) && credentials.setType(Type))
-        {
+        { boolean flag= true;
+            for(int j=0; j<a.product.size(); j++)
+    {
+      if (Name.equals(a.product.get(j).getProductName())  )
+      { 
+          /*int qq;
+        qq=a.product.get(j).getQuantity();
+        qq=qtty+1;
+        a.product.get(j).setQuantity(qq);
+          */
+        flag= false;
+      }
+      
+    }
+            if(flag==true) 
+            {
             a.addProductList(credentials);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Product already exist in the Stock. Search and update its credentials");
+            }
 
             dtm.setRowCount(0);
 
@@ -706,9 +753,12 @@ public class AccessoryManager extends javax.swing.JFrame {
             }
 
             clearField();
-
+            if(flag==true) 
+            {
             JOptionPane.showMessageDialog(null,"Product has been added. Thanks");
+            }
 
+        
         }
         else
         {
@@ -803,6 +853,28 @@ public class AccessoryManager extends javax.swing.JFrame {
     private void quantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quantityActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_quantityActionPerformed
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+        req.setRowCount(0);
+        for(int i=0; i<a.request.size(); i++)
+            {
+                Object[] objs = {a.request.get(i).getEmpName(), a.request.get(i).getEmpUsername(),  a.request.get(i).getEMPID(), a.request.get(i).getProductName(), a.request.get(i).getProductQuantity(),  a.request.get(i).getProductType(),  a.request.get(i).getApproval()  };
+                req.addRow(objs);
+            }
+
+            
+        
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jTable4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable4MouseClicked
+        // TODO add your handling code here:
+        row1= jTable4.getSelectedRow();
+        col1= jTable4.getColumnCount();
+        empid.setText(req.getValueAt(row, 2).toString());
+        proname.setText(req.getValueAt(row, 3).toString());
+       
+    }//GEN-LAST:event_jTable4MouseClicked
 private void clearField()
  {
      productname.setText("Product Name");
@@ -853,6 +925,7 @@ private void clearField()
     private javax.swing.JTextField Price;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField company;
+    private javax.swing.JTextField empid;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -861,6 +934,7 @@ private void clearField()
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -902,9 +976,8 @@ private void clearField()
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable4;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JTextField productname;
+    private javax.swing.JTextField proname;
     private javax.swing.JTextField quantity;
     private javax.swing.JTextField type;
     // End of variables declaration//GEN-END:variables

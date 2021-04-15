@@ -228,6 +228,11 @@ public class Employees extends javax.swing.JFrame {
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton9.setText("RETRIEVE");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -859,7 +864,7 @@ public class Employees extends javax.swing.JFrame {
         int qtty= Integer.parseInt(Quantity);
         String Empid= empid.getText();
 
-        if(data.setProductName(prodName) && data.setEmpName(Name) && data.setEmpUsername(user)  && data.setProductQuantity(qtty) && data.setProductType(Type) && data.setEMPID(Empid))
+        if(data.setProductName(prodName) && data.setEmpName(Name) && data.setEmpUsername(user)  && data.setProductQuantity(qtty) && data.setProductType(Type) && data.setEMPID(Empid) && data.setApproval("Request"))
         { 
             for(int i=0; i<a.list.size(); i++)
           {
@@ -901,6 +906,31 @@ public class Employees extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton11MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+        // TODO add your handling code here:
+        data= new Request();
+        String Name= ename.getText();
+        String user= username.getText();
+        String prodName= productname.getText();
+        String Type= type.getText();
+        String Quantity= quantity.getText();
+        int qtty= Integer.parseInt(Quantity);
+        String Empid= empid.getText();
+        
+        if(data.setProductName(prodName) && data.setEmpName(Name) && data.setEmpUsername(user)  && data.setProductQuantity(qtty) && data.setProductType(Type) && data.setEMPID(Empid) && data.setApproval("Retrieval"))
+        {
+            a.addRequestList(data);
+            dtm.setRowCount(0);
+
+            for(int i=0; i<a.request.size(); i++)
+            {
+                Object[] objs = {a.request.get(i).getProductName(),a.request.get(i).getProductQuantity(),  a.request.get(i).getProductType()};
+                dtm.addRow(objs);
+            }
+        }
+        
+    }//GEN-LAST:event_jButton9MouseClicked
     private void clearField()
  {
      productname.setText("Product Name");

@@ -16,6 +16,7 @@ public class Request {
     private String ProductType;
     private int ProductQuantity;
     private String EMPID;
+    private String Approval;
 
     /**
      * @return the EmpName
@@ -209,6 +210,23 @@ public class Request {
      }
   }
   return flag;
+    }
+
+    /**
+     * @return the Approval
+     */
+    public String getApproval() {
+        return Approval;
+    }
+
+    /**
+     * @param Approval the Approval to set
+     */
+    public boolean setApproval(String Approval) {
+        boolean flag= false;
+        this.Approval = Approval;
+        return true;
+       
     }
     
     

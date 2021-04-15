@@ -970,9 +970,24 @@ public class Admin1 extends javax.swing.JFrame {
         
         
         if(biodata.setName(Name) && biodata.setEmail(Email) && biodata.setPhoneNumber(PhoneNumber) && biodata.setDesignation(Designation) && biodata.setUsername(Username) && biodata.setPassword(Password) && biodata.setCNIC(CNIC) && biodata.setEmployeeID(EmpID))
-        {
+        {boolean flag= true;
+        for(int j=0; j<a.list.size(); j++)
+    {
+      if (Username.equals(a.list.get(j).getUsername()) || EmpID.equals(a.list.get(j).getEmployeeID()))
+      { 
+        flag= false;
+      }
+      
+    }
+            if(flag==true) 
+            {
            
             a.addList(biodata);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "Username or EMP-ID already exist. Try assigning another one.");
+            }
             dtm.setRowCount(0);
             for(int i=0; i<a.list.size(); i++)
             {
@@ -980,7 +995,10 @@ public class Admin1 extends javax.swing.JFrame {
             dtm.addRow(objs);
             }
             clearField();
+            if(flag==true)
+            {
             JOptionPane.showMessageDialog(null,"Employee has been added. Thanks");
+            }
            
             
         }
