@@ -210,6 +210,7 @@ public class EmployeeLogIn extends javax.swing.JFrame {
 
     private void jLabel10MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel10MouseClicked
         // TODO add your handling code here:
+        dispose();
         String username= user12.getText();
         
         String password= pass.getText();

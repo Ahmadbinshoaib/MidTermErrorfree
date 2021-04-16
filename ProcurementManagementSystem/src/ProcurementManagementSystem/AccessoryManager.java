@@ -99,11 +99,15 @@ public class AccessoryManager extends javax.swing.JFrame {
         proname = new javax.swing.JTextField();
         empid = new javax.swing.JTextField();
         jSeparator9 = new javax.swing.JSeparator();
-        jSeparator10 = new javax.swing.JSeparator();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        qt = new javax.swing.JTextField();
+        jLabel37 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
+        Status = new javax.swing.JTextField();
+        jButton5 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -515,6 +519,11 @@ public class AccessoryManager extends javax.swing.JFrame {
         empid.setText("Employee ID");
         empid.setBorder(null);
         empid.setOpaque(false);
+        empid.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                empidMouseClicked(evt);
+            }
+        });
         empid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 empidActionPerformed(evt);
@@ -523,9 +532,19 @@ public class AccessoryManager extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton1.setText("Accept");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton2.setText("Reject");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setText("Exit");
@@ -543,12 +562,66 @@ public class AccessoryManager extends javax.swing.JFrame {
             }
         });
 
+        qt.setForeground(new java.awt.Color(255, 255, 255));
+        qt.setText("Quantity");
+        qt.setBorder(null);
+        qt.setOpaque(false);
+        qt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                qtActionPerformed(evt);
+            }
+        });
+
+        jLabel37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ProcurementManagementSystem/icons8_add_shopping_cart_20px_2.png"))); // NOI18N
+
+        Status.setForeground(new java.awt.Color(255, 255, 255));
+        Status.setText("Quantity");
+        Status.setBorder(null);
+        Status.setOpaque(false);
+        Status.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                StatusActionPerformed(evt);
+            }
+        });
+
+        jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton5.setText("Save");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane4)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(323, 323, 323)
+                        .addComponent(jLabel39))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(jLabel35)
+                        .addGap(9, 9, 9)
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel14Layout.createSequentialGroup()
+                                .addComponent(empid, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel36)))
+                        .addGap(18, 18, 18)
+                        .addComponent(proname, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel37)))
+                .addGap(18, 18, 18)
+                .addComponent(qt, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41)
+                .addComponent(Status, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 95, Short.MAX_VALUE))
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createSequentialGroup()
@@ -561,34 +634,20 @@ public class AccessoryManager extends javax.swing.JFrame {
                         .addGap(165, 165, 165)
                         .addComponent(jLabel32))
                     .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addGap(157, 157, 157)
-                        .addComponent(jLabel35)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel39)
-                                    .addComponent(empid, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                                .addComponent(jLabel36))
-                            .addGroup(jPanel14Layout.createSequentialGroup()
-                                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(proname, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel14Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(142, 142, 142)
                         .addComponent(jButton4)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton3)
-                        .addGap(156, 156, 156)))
-                .addContainerGap(60, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton5)
+                        .addGap(14, 14, 14)
+                        .addComponent(jButton3))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGap(221, 221, 221)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -601,26 +660,34 @@ public class AccessoryManager extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel39)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel33)
-                .addGap(33, 33, 33)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                        .addComponent(jLabel33)
+                        .addGap(85, 85, 85))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(proname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel35)
+                                .addGroup(jPanel14Layout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addComponent(empid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel36, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(jLabel37)
+                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(qt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(proname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(empid, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel36))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator9, javax.swing.GroupLayout.DEFAULT_SIZE, 10, Short.MAX_VALUE)
-                            .addComponent(jSeparator10)))
-                    .addComponent(jLabel35, javax.swing.GroupLayout.Alignment.LEADING))
-                .addGap(29, 29, 29)
+                            .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)))
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
                 .addGap(26, 26, 26)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(93, 93, 93))
@@ -726,11 +793,11 @@ public class AccessoryManager extends javax.swing.JFrame {
     {
       if (Name.equals(a.product.get(j).getProductName())  )
       { 
-          /*int qq;
-        qq=a.product.get(j).getQuantity();
-        qq=qtty+1;
+         int qq;
+        qq= a.product.get(j).getQuantity();
+        qq=qq+qtty;
         a.product.get(j).setQuantity(qq);
-          */
+          
         flag= false;
       }
       
@@ -741,7 +808,7 @@ public class AccessoryManager extends javax.swing.JFrame {
             }
             else
             {
-                JOptionPane.showMessageDialog(null, "Product already exist in the Stock. Search and update its credentials");
+                //JOptionPane.showMessageDialog(null, "Product already exist in the Stock. Search and update its credentials");
             }
 
             dtm.setRowCount(0);
@@ -873,8 +940,104 @@ public class AccessoryManager extends javax.swing.JFrame {
         col1= jTable4.getColumnCount();
         empid.setText(req.getValueAt(row, 2).toString());
         proname.setText(req.getValueAt(row, 3).toString());
+        qt.setText(req.getValueAt(row, 4).toString());
+        Status.setText(req.getValueAt(row, 6).toString());
        
     }//GEN-LAST:event_jTable4MouseClicked
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        String id= empid.getText();
+        String Proname= proname.getText();
+        String quan= qt.getText();
+        int qtty= Integer.parseInt(quan);
+        String status=Status.getText();
+        req.setRowCount(0);
+        JOptionPane.showMessageDialog(null,"Request has been accepted");
+        for(int i=0; i<a.request.size(); i++)
+        {
+            a.request.get(i).setAccRej("Accepted");
+            Object[] objs = {a.request.get(i).getEmpName(), a.request.get(i).getEmpUsername(),  a.request.get(i).getEMPID(), a.request.get(i).getProductName(), a.request.get(i).getProductQuantity(),  a.request.get(i).getProductType(),  a.request.get(i).getApproval()  };            
+            req.removeRow(i);
+            
+            req.addRow(objs);
+            
+        }
+        
+        //JOptionPane.showMessageDialog(null,qtty);
+        JOptionPane.showMessageDialog(null,status);
+        
+      
+        for(int i=0; i<a.product.size(); i++)
+        {  int last=0;
+            if(Proname.equals(a.product.get(i).getProductName()))
+            {
+                if(status.equals("Request"))
+                {
+                   last= a.product.get(i).getQuantity()-qtty;
+                   a.product.get(i).setQuantity(last);
+                    
+                }
+                else if(status.equals("Retrieval"))
+                {
+                   last= a.product.get(i).getQuantity()+qtty;
+                   a.product.get(i).setQuantity(last); 
+                 
+                }
+            }
+            else
+            {
+                
+            }
+            
+        }
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void empidMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_empidMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_empidMouseClicked
+
+    private void qtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_qtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_qtActionPerformed
+
+    private void StatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StatusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StatusActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        req.setRowCount(0);
+        for(int i=0; i<a.request.size(); i++)
+        {
+            a.request.get(i).setAccRej("Rejected");
+            Object[] objs = {a.request.get(i).getEmpName(), a.request.get(i).getEmpUsername(),  a.request.get(i).getEMPID(), a.request.get(i).getProductName(), a.request.get(i).getProductQuantity(),  a.request.get(i).getProductType(),  a.request.get(i).getApproval()  };            
+            //req.removeRow(row1);
+            
+            req.addRow(objs);
+            
+        }
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        // TODO add your handling code here:
+        if(a.saveRequestData("Request.txt"))
+        {
+            JOptionPane.showMessageDialog(null,"Data has been stored");
+            
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Data has not been stored");
+        }
+           
+    }//GEN-LAST:event_jButton5MouseClicked
 private void clearField()
  {
      productname.setText("Product Name");
@@ -923,6 +1086,7 @@ private void clearField()
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Price;
+    private javax.swing.JTextField Status;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JTextField company;
     private javax.swing.JTextField empid;
@@ -935,6 +1099,7 @@ private void clearField()
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -950,6 +1115,7 @@ private void clearField()
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -966,9 +1132,9 @@ private void clearField()
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator11;
     private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator6;
@@ -978,6 +1144,7 @@ private void clearField()
     private javax.swing.JTable jTable4;
     private javax.swing.JTextField productname;
     private javax.swing.JTextField proname;
+    private javax.swing.JTextField qt;
     private javax.swing.JTextField quantity;
     private javax.swing.JTextField type;
     // End of variables declaration//GEN-END:variables

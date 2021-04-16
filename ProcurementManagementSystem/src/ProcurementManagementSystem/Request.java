@@ -17,6 +17,7 @@ public class Request {
     private int ProductQuantity;
     private String EMPID;
     private String Approval;
+    private String AccRej;
 
     /**
      * @return the EmpName
@@ -225,6 +226,21 @@ public class Request {
     public boolean setApproval(String Approval) {
         boolean flag= false;
         this.Approval = Approval;
+        return true;
+       
+    }
+    
+    public String getAccRej() {
+        return AccRej;
+    }
+
+    /**
+     * @param AccRej the Approval to set
+     */
+    public boolean setAccRej(String AccRej) {
+        //AccRej="Pending";
+        boolean flag= false;
+        this.AccRej = AccRej;
         return true;
        
     }

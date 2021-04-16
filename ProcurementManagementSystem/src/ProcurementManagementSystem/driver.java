@@ -5,6 +5,9 @@
  */
 package ProcurementManagementSystem;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.*;
@@ -14,6 +17,7 @@ import java.util.*;
  * @author Maria
  */
 public class driver {
+    
 
     /**
      * @param args the command line arguments
@@ -22,6 +26,9 @@ public class driver {
         // TODO code application logic here
         MainPage a= new MainPage();
         a.setVisible(true);
+        //driver d= new driver()
+        //Studio b= Studio.getInstance();
+        //loadData();
         
         
        

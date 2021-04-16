@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,14 +27,14 @@ public class Studio {
     static Studio a= new Studio();
     
     
+    
+    
     public List<Employee>list= new ArrayList<>();
     public List<Products>product= new ArrayList<>();
     public List<Request>request= new ArrayList<>();
     private Studio()
     {
-        list= new ArrayList<Employee>();
-        product= new ArrayList<Products>();
-        request= new ArrayList<Request>();
+        
     }
     
      public static Studio getInstance(){
@@ -44,8 +45,9 @@ public class Studio {
         
         return instance;
     }
-
-   
+     
+     
+  
     public void addList( Employee a)
     {
         list.add(a);
@@ -72,7 +74,7 @@ public class Studio {
             
             for(int i = 0 ; i < list.size();i++)
             {
-                bw.write(list.get(i).getName() + ", "+
+                bw.write(list.get(i).getName() + ","+
                         list.get(i).getEmail() + ","+
                         list.get(i).getPhoneNumber()+","+
                         list.get(i).getDesignation()+","+
@@ -95,45 +97,49 @@ public class Studio {
         
     }
      
-     
-     public void loadData(String filename)
-    {
+  public void loadData()
+    { //Studio a= Studio.getInstance();
         try {
-            FileReader fr = new FileReader(filename);
-            BufferedReader br = new BufferedReader(fr);
-            
-          String line = br.readLine();
-            
-          line = br.readLine();
-          while(line != null)
-          {
-               Employee c = new Employee();
-               String[] toks = line.split(",");
-               
-               c.setName(toks[0]);
-               c.setEmail(toks[1]);
-               c.setPhoneNumber(toks[2]);
-               c.setDesignation(toks[3]);
-               c.setUsername(toks[4]);
-               c.setPassword(toks[5]);
-               c.setEmployeeID(toks[6]);
-               c.setCNIC(toks[7]);
-               Studio.getInstance().addList(c);
-               
-          }
-             
-              
-          
-            
-            
-            br.close();
-            fr.close();
-        } catch (Exception ex) {
+            try (FileReader fr = new FileReader("Employee.txt")) {
+                BufferedReader br = new BufferedReader(fr);
+                
+                String line = br.readLine();
+                
+                line = br.readLine();
+                while(line != null)
+                {
+                    Employee c = new Employee();
+                    String[] toks = line.split(",");
+                    
+                    c.setName(toks[0]);
+                    c.setEmail(toks[1]);
+                    c.setPhoneNumber(toks[2]);
+                    c.setDesignation(toks[3]);
+                    c.setUsername(toks[4]);
+                    c.setPassword(toks[5]);
+                    c.setEmployeeID(toks[6]);
+                    c.setCNIC(toks[7]);
+                    list.add(c);
+                    line= br.readLine();
+                    
+                }
+                
+                
+                
+                
+                
+                br.close();
+                fr.close();
+            }
+        } catch (IOException ex) {
            
         }
         
         
     }
+     
+     
+     
      
      public void addProductList( Products a)
     { 
@@ -198,6 +204,39 @@ public class Studio {
        request.set(a,b);
        
    }
+   
+   public boolean saveRequestData(String filename)
+    { boolean flag= false;
+        try {
+            FileWriter fw = new FileWriter(filename);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            
+            
+            for(int i = 0 ; i < request.size();i++)
+            {
+                bw.write(request.get(i).getEmpName() + ", "+
+                        request.get(i).getEmpUsername() + ","+
+                        request.get(i).getProductName()+","+
+                        request.get(i).getProductType()+","+
+                        request.get(i).getEMPID()+"," +
+                        request.get(i).getApproval() + ","+                        
+                        request.get(i).getAccRej()+"\n"
+                        
+                        
+                );
+            }
+            
+            bw.flush();
+            bw.close();
+            fw.close();
+            flag= true;
+        } catch (Exception ex) {
+            flag= false;
+        }
+        return flag;
+        
+    }
         
     
 }

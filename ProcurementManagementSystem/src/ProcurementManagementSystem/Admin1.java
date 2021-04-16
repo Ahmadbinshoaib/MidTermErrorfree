@@ -50,6 +50,8 @@ public class Admin1 extends javax.swing.JFrame {
         jTable3.setModel(am);
         this.setLocationRelativeTo(null);
         
+        a.loadData();
+        
     }
 
     /**
@@ -991,6 +993,7 @@ public class Admin1 extends javax.swing.JFrame {
             dtm.setRowCount(0);
             for(int i=0; i<a.list.size(); i++)
             {
+                
             Object[] objs = {a.list.get(i).getName(),a.list.get(i).getEmail(), a.list.get(i).getPhoneNumber(), a.list.get(i).getDesignation(),  a.list.get(i).getUsername(),  a.list.get(i).getPassword(), a.list.get(i).getEmployeeID(), a.list.get(i).getCNIC()};
             dtm.addRow(objs);
             }
@@ -1210,7 +1213,7 @@ public class Admin1 extends javax.swing.JFrame {
     private void jButton16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton16MouseClicked
         // TODO add your handling code here:
        
-        a.loadData("Employee.txt");
+        //a.loadData("Employee.txt");
         dtm.setRowCount(0);
              for(int i=0; i<a.list.size(); i++)
             {
