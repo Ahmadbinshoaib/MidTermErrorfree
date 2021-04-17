@@ -39,7 +39,7 @@ public class Products {
     {
     for(int i=0; i<len; i++)
     {
-      if((aproductName[i]>='A' && aproductName[i]<='Z') || (aproductName[i]>='a' && aproductName[i]<='z') || (aproductName[i]>='0' && aproductName[i]<='9') )
+      if((aproductName[i]>='A' && aproductName[i]<='Z') || (aproductName[i]>='a' && aproductName[i]<='z') || (aproductName[i]>='0' && aproductName[i]<='9') || (aproductName[i]>=' ')  )
      {
         count= count+1;
      }
