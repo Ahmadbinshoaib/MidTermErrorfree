@@ -1,1 +1,3 @@
-Pencil, Dollar,30,6,Returnable
+Pencil, null,30,16,Returnable
+Laptop, null,12000,2,Returnable
+StickyNotes, Null,1200,20,Non-Returnable

@@ -10,13 +10,9 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+import java.util.*;
 
 /**
  *
@@ -32,10 +28,7 @@ public class Studio {
     public List<Employee>list= new ArrayList<>();
     public List<Products>product= new ArrayList<>();
     public List<Request>request= new ArrayList<>();
-    private Studio()
-    {
-        
-    }
+    
     
      public static Studio getInstance(){
         if(instance==null)
@@ -46,8 +39,30 @@ public class Studio {
         return instance;
     }
      
+     private Studio(){
+         
+     }
      
   
+    
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // TODO code application logic here
+        MainPage a= new MainPage();
+        a.setVisible(true);
+        //driver d= new driver()
+        Studio b= Studio.getInstance();
+        b.loadEmployee();
+        b.loadProduct();
+        b.loadRequest();
+        b.loadManager();
+        
+        
+       
+        
+    }
     public void addList( Employee a)
     {
         list.add(a);
@@ -85,7 +100,7 @@ public class Studio {
                         
                 );
             }
-            
+           
             bw.flush();
             bw.close();
             fw.close();
@@ -97,45 +112,43 @@ public class Studio {
         
     }
      
-  public void loadData()
-    { //Studio a= Studio.getInstance();
-        try {
-            try (FileReader fr = new FileReader("Employee.txt")) {
-                BufferedReader br = new BufferedReader(fr);
+ public  void loadEmployee(){
+         
+     try {
+         try (FileReader fr = new FileReader("Employee.txt"); BufferedReader br = new BufferedReader(fr)) {
+             
+             String line= br.readLine();
+             
+            
+            
+             while(line != null)
+             {
+                 
+                 Employee e = new Employee();
+                 String[] str = line.split(",");
+                 e.setName(str[0]);
+                 e.setEmail(str[1]);
+                 e.setPhoneNumber(str[2]);
+                 e.setDesignation(str[3]);
+                 e.setUsername(str[4]);
+                 e.setPassword(str[5]);
+                 e.setEmployeeID(str[6]);
+                 e.setCNIC(str[7]);
+                         
                 
-                String line = br.readLine();
-                
-                line = br.readLine();
-                while(line != null)
-                {
-                    Employee c = new Employee();
-                    String[] toks = line.split(",");
-                    
-                    c.setName(toks[0]);
-                    c.setEmail(toks[1]);
-                    c.setPhoneNumber(toks[2]);
-                    c.setDesignation(toks[3]);
-                    c.setUsername(toks[4]);
-                    c.setPassword(toks[5]);
-                    c.setEmployeeID(toks[6]);
-                    c.setCNIC(toks[7]);
-                    list.add(c);
-                    line= br.readLine();
-                    
-                }
-                
-                
-                
-                
-                
-                br.close();
-                fr.close();
-            }
+                 list.add(e);
+                  line = br.readLine();
+                 
+             }
+             
+             
+             br.close();
+             fr.close();
+             
+         }
         } catch (IOException ex) {
            
         }
-        
-        
     }
      
      
@@ -189,6 +202,44 @@ public class Studio {
         
     }
    
+   public  void loadProduct(){
+         
+     try {
+         try (FileReader fr = new FileReader("ProductData.txt"); BufferedReader br = new BufferedReader(fr)) {
+             
+             String line= br.readLine();
+             
+            
+            
+             while(line != null)
+             {
+                 
+                 Products e = new Products();
+                 String[] str = line.split(",");
+                 e.setProductName(str[0]);
+                 e.setCompanyName(str[1]);
+                 e.setPrice(str[2]);
+                 //int a= Integer.parseInt(str[3]);
+                 e.setQuantity(Integer.parseInt(str[3]));
+                 e.setType(str[4]);
+                 
+                         
+                
+                 product.add(e);
+                  line = br.readLine();
+                 
+             }
+             
+             
+             br.close();
+             fr.close();
+             
+         }
+        } catch (IOException ex) {
+           
+        }
+    }
+   
    public void addRequestList( Request obj)
     {
         request.add(obj);
@@ -215,12 +266,13 @@ public class Studio {
             
             for(int i = 0 ; i < request.size();i++)
             {
-                bw.write(request.get(i).getEmpName() + ", "+
+                bw.write(request.get(i).getEmpName() + ","+
                         request.get(i).getEmpUsername() + ","+
                         request.get(i).getProductName()+","+
                         request.get(i).getProductType()+","+
                         request.get(i).getEMPID()+"," +
-                        request.get(i).getApproval() + ","+                        
+                        request.get(i).getApproval() + ","+  
+                        request.get(i).getProductQuantity() + ","+
                         request.get(i).getAccRej()+"\n"
                         
                         
@@ -237,6 +289,116 @@ public class Studio {
         return flag;
         
     }
+   
+   public  void loadRequest(){
+         
+     try {
+         try (FileReader fr = new FileReader("Request.txt"); BufferedReader br = new BufferedReader(fr)) {
+             
+             String line= br.readLine();
+             
+            
+            
+             while(line != null)
+             {
+                 
+                 Request e = new Request();
+                 String[] str = line.split(",");
+                  e.setEmpName(str[0]);
+                  e.setEmpUsername(str[1]);
+                  e.setProductName(str[2]);
+                  e.setProductType(str[3]);
+                  e.setEMPID(str[4]);
+                  e.setApproval(str[5]);
+                  e.setProductQuantity(Integer.parseInt(str[6]));
+                  e.setAccRej(str[7]);
+
+                 
+                         
+                
+                 request.add(e);
+                  line = br.readLine();
+                 
+             }
+             
+             
+             br.close();
+             fr.close();
+             
+         }
+        } catch (IOException ex) {
+           
+        }
+    }
+   
+   public boolean saveManager(String filename)
+    { boolean flag= false;
+        try {
+            FileWriter fw = new FileWriter(filename);
+            BufferedWriter bw = new BufferedWriter(fw);
+            
+            
+            
+               Manager b= Manager.getInstance();
+                bw.write(b.getCNIC() + ", "+
+                        b.getEmail() + ","+
+                        b.getName()+","+
+                        b.getPassword()+","+
+                        b.getPhoneNumber()+"," +
+                        b.getUsername()  
+                        
+                        
+                        
+                );
+            
+            
+            bw.flush();
+            bw.close();
+            fw.close();
+            flag= true;
+        } catch (Exception ex) {
+            flag= false;
+        }
+        return flag;
+        
+    }
+   
+    public  void loadManager(){
+         
+     try {
+         try (FileReader fr = new FileReader("Manager.txt"); BufferedReader br = new BufferedReader(fr)) {
+             
+             String line= br.readLine();
+             
+            
+            
+             while(line != null)
+             {
+                 
+                 Manager b= Manager.getInstance();
+                 String[] str = line.split(",");
+                  b.setCNIC(str[0]);
+                  b.setEmail(str[1]);
+                  b.setName(str[2]);
+                  b.setPassword(str[3]);
+                  b.setPhoneNumber(str[4]);
+                  b.setUsername(str[5]);
+                  
+
+                  line = br.readLine();
+                 
+             }
+             
+             
+             br.close();
+             fr.close();
+             
+         }
+        } catch (IOException ex) {
+           
+        }
+    }
         
     
+
 }

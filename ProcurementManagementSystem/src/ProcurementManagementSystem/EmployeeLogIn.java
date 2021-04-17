@@ -216,21 +216,30 @@ public class EmployeeLogIn extends javax.swing.JFrame {
         String password= pass.getText();
         EmployeeLogIn ch= new EmployeeLogIn();
         //ch.setVisible(false);
+        boolean flag= false;
          for(int i=0; i<b.list.size(); i++)
     {
       if (username.equals(b.list.get(i).getUsername()) && password.equals(b.list.get(i).getPassword())  )
       {
-          Employees a= new Employees();
+         flag= true;
+          
+      }
+     
+      
+    }
+         if(flag==true)
+         {
+         Employees a= new Employees();
          a.setVisible(true);
          Employees q= new Employees();
          q.check.setText(username);
-          
-      }
-      else
-      {
-          JOptionPane.showMessageDialog(null,"Username or Password is incorrect");
-      }
-    }
+         JOptionPane.showMessageDialog(null,"Credentials are correct");
+         }
+         else
+         {
+          JOptionPane.showMessageDialog(null,"Username or password is incorrect");  
+         }
+         
          //b.list.get(0).getName()
         
         
